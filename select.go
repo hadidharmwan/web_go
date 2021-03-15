@@ -28,8 +28,28 @@ func main() {
 
 func DisplayRadioButtons(w http.ResponseWriter, r *http.Request){
 
+	Title := "Which do you prefer?"
+	MyRadioButtons := []RadioButton{
+		RadioButton{"animalselect", "cats", false, false, "Cats"},
+		RadioButton{"animalselect", "dogs", false, false, "Dogs"},
+	}
+
+	MyPageVariables := PageVariables{
+		PageTitle: Title,
+		PageRadioButton : MyRadioButtons,
+	}
+
+	t, err := template.ParseFiles("select.html")
+	if err != nil {
+		log.Print("template parsing error: ", err)
+	}
+
+	err = t.Execute(w, MyPageVariables)
+	if err != nil {
+		log.Print("template executing error: ", err)
+	}
 }
 
 func UserSelected(w http.ResponseWriter, r *http.Request){
-	
+
 }
