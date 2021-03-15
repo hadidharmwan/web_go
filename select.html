@@ -6,7 +6,7 @@
 </head>
 <script type='text/javascript'>
     $(document).ready(function(){
-        $('input'[name=animalselect]).change(function() {
+        $('input[name=animalselect]').change(function() {
             $('form').submit();
         });
     });
@@ -22,7 +22,7 @@
     </form>
     {{end}}
 
-    {{with $2:.Answer}}
+    {{with $2:= .Answer}}
     <p>Your answer is {{$2}}</p>
     {{end}}
 </body>
