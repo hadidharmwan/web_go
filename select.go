@@ -36,7 +36,7 @@ func DisplayRadioButtons(w http.ResponseWriter, r *http.Request){
 
 	MyPageVariables := PageVariables{
 		PageTitle: Title,
-		PageRadioButton : MyRadioButtons,
+		PageRadioButtons : MyRadioButtons,
 	}
 
 	t, err := template.ParseFiles("select.html")
