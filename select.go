@@ -51,5 +51,24 @@ func DisplayRadioButtons(w http.ResponseWriter, r *http.Request){
 }
 
 func UserSelected(w http.ResponseWriter, r *http.Request){
+	r.ParseForm()
 
+
+	youranimal := r.Form.Get("animalselect")
+
+	Title := "Your preferred animal"
+	MyPageVariables := PageVariables{
+		PageTitle: Title,
+		Answer : youranimal,
+	}
+
+	t, err := template.ParseFiles("select.html")
+	if err != nil {
+		log.Print("template parsing error: ", err)
+	}
+
+	err = t.Execute(w, MyPageVariables)
+	if err != nil {
+		log.Print("template executing error: ", err)
+	}
 }
